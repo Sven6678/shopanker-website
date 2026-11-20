@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sven6678.github.io/shopanker-website/sitemap.xml
