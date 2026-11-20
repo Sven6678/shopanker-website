@@ -46,6 +46,7 @@
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">☰</button>
     <nav class="nav" id="nav">
       <a href="#vergleich">Warum Shopanker</a>
+      <a href="#beispiele">Beispiele</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#pakete">Preise</a>
       <a href="#ablauf">Ablauf</a>
@@ -58,7 +59,10 @@
 <main id="top">
 
 <section class="hero">
+  <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div>
   <div class="wrap">
+   <div class="hero-grid">
+    <div>
     <span class="eyebrow" style="color:#7fe0d2">Shopify-Einrichtung & Betreuung</span>
     <h1>Ihr Onlineshop. Fest verankert.</h1>
     <p class="lead">Shopify-Einrichtung und laufende Betreuung für kleine und mittlere Händler – mit <strong style="color:#fff">festen Preisen, die Sie schon vor dem ersten Gespräch kennen</strong>. Einrichtung ab 990 €, Betreuung ab 79 € im Monat.</p>
@@ -66,6 +70,31 @@
       <a class="btn" href="#kontakt">Kostenloses Erstgespräch</a>
       <a class="btn btn-ghost" href="#pakete">Preise ansehen</a>
     </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span>holzwerk-nord.de</span></div>
+        <div class="mini-head" style="--c:#8b5e3c"><b>Holzwerk Nord</b><span>Sofas · Tische · Leuchten</span></div>
+        <div class="mini-hero" style="background:linear-gradient(135deg,#f4e7da,#e6cdb5)">
+          <div><b>Neu: Herbst-Kollektion</b><small>Massivholz aus Europa</small><em style="background:#8b5e3c">Jetzt entdecken</em></div>
+          <span class="big">🛋️</span>
+        </div>
+        <div class="mini-grid">
+          <div><span>🪑</span><b>Stuhl Nora</b><em>149 €</em></div>
+          <div><span>🛏️</span><b>Bett Fjord</b><em>890 €</em></div>
+          <div><span>🪴</span><b>Pflanzkübel</b><em>39 €</em></div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="mini-head" style="--c:#e4572e"><b>Laufwerk</b></div>
+        <div class="phone-prod"><span>👟</span><b>Runner Pro</b><em>119 €</em><i>In den Warenkorb</i></div>
+      </div>
+      <div class="float f1">🛒 Neue Bestellung <b>+ 189 €</b></div>
+      <div class="float f2">✅ Shop ist online</div>
+      <div class="float f3">⏱ 1,25 von 3 Std. genutzt</div>
+    </div>
+   </div>
     <ul class="trust">
       <li><strong>Feste Preise</strong><span>öffentlich, ohne Überraschungen</span></li>
       <li><strong>2 Werktage</strong><span>Antwort auf jede Anfrage</span></li>
@@ -117,6 +146,30 @@
       <div class="card branch"><div class="icon">💍</div><h3>Schmuck</h3><p>Hochwertige Bildergalerien, Gravur, Geschenkverpackung, versicherter Versand.</p></div>
       <div class="card branch"><div class="icon">🧺</div><h3>Täglicher Bedarf</h3><p>Abos, Bundles, Mengenrabatte und schnelle Nachbestellung.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="beispiele" class="examples">
+  <div class="wrap">
+    <span class="eyebrow">Beispiel-Shops</span>
+    <h2>So könnte Ihr Shop aussehen</h2>
+    <p class="section-intro">Design-Beispiele aus unseren fünf Branchen – jedes mit eigener Farbwelt, eigener Startseite und branchentypischen Funktionen. Wählen Sie eine Branche:</p>
+    <div class="ex-tabs" role="tablist" aria-label="Branche wählen"></div>
+    <div class="ex-stage">
+      <div class="ex-browser browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span class="ex-url"></span></div>
+        <div class="mini-head ex-head"><b></b><span></span></div>
+        <div class="mini-hero ex-hero"><div><b></b><small></small><em>Jetzt entdecken</em></div><span class="big"></span></div>
+        <div class="mini-grid ex-grid"></div>
+      </div>
+      <div class="ex-info">
+        <h3 class="ex-title"></h3>
+        <p class="ex-text"></p>
+        <ul class="check-list ex-features"></ul>
+        <a class="btn" href="#kontakt">So einen Shop anfragen</a>
+      </div>
+    </div>
+    <p class="note">Hinweis: Diese Entwürfe sind Design-Beispiele zur Veranschaulichung, keine Kundenprojekte.</p>
   </div>
 </section>
 
@@ -316,8 +369,19 @@
 <section id="ueber">
   <div class="wrap about">
     <div class="avatar" aria-hidden="true">
-      <!-- TODO: durch Foto ersetzen (z. B. <img src="sven.jpg" alt="…">) -->
-      <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#0f2a44"/><g fill="none" stroke="#12a594" stroke-width="2.4" stroke-linecap="round"><circle cx="16" cy="8.5" r="2.6"/><path d="M16 11.2v13.3M10.5 14.5h11M8.5 19.5c1.2 3.6 4.2 5.5 7.5 5.5s6.3-1.9 7.5-5.5"/></g></svg>
+      <!-- TODO: durch echtes Foto ersetzen, z. B. <img src="foto.jpg" alt="Vorname Nachname"> -->
+      <svg viewBox="0 0 200 200">
+        <defs><linearGradient id="bgp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9f5ef"/><stop offset="1" stop-color="#bfe3f0"/></linearGradient></defs>
+        <rect width="200" height="200" fill="url(#bgp)"/>
+        <path d="M30 200c6-42 36-64 70-64s64 22 70 64z" fill="#0f2a44"/>
+        <path d="M86 136h28l-14 22z" fill="#fff"/>
+        <rect x="88" y="112" width="24" height="26" rx="8" fill="#e8b996"/>
+        <circle cx="100" cy="88" r="34" fill="#f1c7a5"/>
+        <path d="M66 86c0-24 14-38 34-38s34 14 34 36c-8-10-20-14-34-14s-26 6-34 16z" fill="#4a3426"/>
+        <circle cx="88" cy="90" r="3.4" fill="#2b2b2b"/><circle cx="112" cy="90" r="3.4" fill="#2b2b2b"/>
+        <path d="M89 104c6 6 16 6 22 0" stroke="#a5583c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="146" cy="160" r="16" fill="#12a594"/><path d="M139 160l5 5 9-10" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
     <div>
       <span class="eyebrow">Über Shopanker</span>
@@ -421,6 +485,76 @@
       document.getElementById(t.getAttribute('aria-controls')).hidden = !sel;
     });
   }));
+
+  // Beispiel-Shops
+  const SHOPS = [
+    { key: 'moebel', tab: '🛋️ Möbel', name: 'Holzwerk Nord', url: 'holzwerk-nord.de', tag: 'Sofas · Tische · Leuchten', c: '#8b5e3c', bg: 'linear-gradient(135deg,#f4e7da,#e6cdb5)',
+      hero: ['Neu: Herbst-Kollektion', 'Massivholz aus Europa'], big: '🛋️',
+      prods: [['🪑','Stuhl Nora','149 €'],['🛏️','Bett Fjord','890 €'],['💡','Leuchte Ava','79 €'],['🪴','Pflanzkübel','39 €']],
+      title: 'Möbel & Einrichtung', text: 'Ruhige Naturtöne, große Raumbilder und Varianten nach Material und Maß.',
+      feat: ['Varianten für Holzart, Stoff und Maß', 'Lieferzeit je Artikel sichtbar', 'Speditionsversand für Sperrgut', 'Musterbestellung für Stoffe'] },
+    { key: 'schuhe', tab: '👟 Schuhe', name: 'Laufwerk', url: 'laufwerk-shop.de', tag: 'Sneaker · Laufschuhe · Outdoor', c: '#e4572e', bg: 'linear-gradient(135deg,#ffe3d6,#ffc9b3)',
+      hero: ['Bis zu 30 % auf Laufschuhe', 'Nur diese Woche'], big: '👟',
+      prods: [['👟','Runner Pro','119 €'],['🥾','Trail X','139 €'],['👞','Classic','99 €'],['🩴','Slide','29 €']],
+      title: 'Schuhe', text: 'Kräftige Farben, schnelle Filter und eine Größenberatung, die Retouren spart.',
+      feat: ['Filter nach Größe und Weite', 'Größentabelle direkt am Produkt', 'Einfaches Retouren-Portal', 'Sale-Banner mit Countdown'] },
+    { key: 'mode', tab: '👗 Mode', name: 'Linnea', url: 'linnea-mode.de', tag: 'Damenmode · Basics · Accessoires', c: '#9c6b7a', bg: 'linear-gradient(135deg,#f6e4ea,#e9cbd6)',
+      hero: ['Lookbook Herbst', 'Leinen & Wolle'], big: '👗',
+      prods: [['👗','Kleid Ida','89 €'],['🧥','Mantel Vera','229 €'],['👚','Shirt Mia','35 €'],['👜','Tasche Lou','69 €']],
+      title: 'Mode', text: 'Ein Lookbook als Startseite, Kollektionen nach Saison und Kombi-Vorschläge.',
+      feat: ['Lookbook und Kollektionen', '„Passt dazu“-Empfehlungen', 'Größenberatung je Artikel', 'Sale-Logik mit Streichpreisen'] },
+    { key: 'schmuck', tab: '💍 Schmuck', name: 'Goldfaden', url: 'goldfaden-schmuck.de', tag: 'Ringe · Ketten · Gravuren', c: '#a8862b', bg: 'linear-gradient(135deg,#fbf3dc,#efe0b3)',
+      hero: ['Mit persönlicher Gravur', 'Handgefertigt in Deutschland'], big: '💍',
+      prods: [['💍','Ring Luna','189 €'],['📿','Kette Stella','129 €'],['⌚','Uhr Aurel','249 €'],['🎁','Geschenkbox','9 €']],
+      title: 'Schmuck', text: 'Edle Bildergalerien mit Zoom, Gravur-Optionen und Geschenkverpackung.',
+      feat: ['Zoom-Galerie für Details', 'Gravur als Produktoption', 'Geschenkverpackung im Warenkorb', 'Versicherter Versand'] },
+    { key: 'alltag', tab: '🧺 Täglicher Bedarf', name: 'Vorratskammer', url: 'vorratskammer.shop', tag: 'Kaffee · Tee · Haushalt', c: '#3a7d44', bg: 'linear-gradient(135deg,#e2f2e1,#c7e5c6)',
+      hero: ['Im Abo 10 % sparen', 'Automatisch nachgeliefert'], big: '☕',
+      prods: [['☕','Kaffee Bio','12,90 €'],['🍵','Grüner Tee','7,50 €'],['🧴','Spülmittel','3,90 €'],['🧺','Probierset','24 €']],
+      title: 'Täglicher Bedarf', text: 'Schnelles Nachbestellen, Abos und Bundles für Produkte, die man immer wieder braucht.',
+      feat: ['Abo mit Rabatt', 'Bundles und Mengenrabatte', 'Schnelle Nachbestellung', 'Grundpreis-Feld technisch angelegt'] },
+  ];
+  const tabBox = document.querySelector('.ex-tabs');
+  const stage = document.querySelector('.ex-stage');
+  function showShop(i) {
+    const s = SHOPS[i];
+    stage.classList.remove('swap'); void stage.offsetWidth; stage.classList.add('swap');
+    stage.style.setProperty('--c', s.c);
+    stage.querySelector('.ex-url').textContent = s.url;
+    stage.querySelector('.ex-head b').textContent = s.name;
+    stage.querySelector('.ex-head span').textContent = s.tag;
+    const hero = stage.querySelector('.ex-hero');
+    hero.style.background = s.bg;
+    hero.querySelector('b').textContent = s.hero[0];
+    hero.querySelector('small').textContent = s.hero[1];
+    hero.querySelector('.big').textContent = s.big;
+    stage.querySelector('.ex-grid').innerHTML = s.prods.map(p => `<div><span>${p[0]}</span><b>${p[1]}</b><em>${p[2]}</em></div>`).join('');
+    stage.querySelector('.ex-title').textContent = s.title;
+    stage.querySelector('.ex-text').textContent = s.text;
+    stage.querySelector('.ex-features').innerHTML = s.feat.map(f => `<li>${f}</li>`).join('');
+    tabBox.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-selected', i === j));
+  }
+  SHOPS.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = s.tab;
+    b.addEventListener('click', () => { showShop(i); clearInterval(autoTimer); });
+    tabBox.appendChild(b);
+  });
+  showShop(0);
+  // automatisch weiterschalten, bis jemand klickt
+  let cur = 0;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const autoTimer = reduce ? null : setInterval(() => { cur = (cur + 1) % SHOPS.length; showShop(cur); }, 4500);
+
+  // Einblenden beim Scrollen
+  if ('IntersectionObserver' in window && !reduce) {
+    const els = document.querySelectorAll('section h2, .card, .step, .table-wrap, .ex-stage, .about, details');
+    els.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  }
 
   // Solange kein Formulardienst eingetragen ist: Hinweis statt Absenden
   const form = document.getElementById('kontakt-form');
