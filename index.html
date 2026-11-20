@@ -9,7 +9,7 @@
   <!-- noindex entfernen, sobald Impressum und Datenschutz vollständig sind -->
   <meta name="robots" content="noindex">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
   <meta property="og:title" content="Shopanker – Shopify-Shops einrichten & betreuen zu festen Preisen">
@@ -70,28 +70,27 @@
       <a class="btn btn-ghost" href="#pakete">Preise ansehen</a>
     </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="browser">
-        <div class="browser-bar"><i></i><i></i><i></i></div>
-        <div class="mini-head" style="--c:#8b5e3c"><b>Ihr Logo</b><span>Kategorie · Kategorie · Kategorie</span></div>
-        <div class="mini-hero" style="background:linear-gradient(135deg,#f4e7da,#e6cdb5)">
-          <div><b>Ihre Kollektion</b><small>Ihr Angebot im Mittelpunkt</small><em style="background:#8b5e3c">Jetzt entdecken</em></div>
-          <span class="big">🛋️</span>
+    <div class="hero-visual">
+      <figure class="browser slider" aria-roledescription="Karussell" aria-label="Demo-Shops von Shopanker">
+        <div class="browser-bar"><i></i><i></i><i></i><span class="slide-label" aria-live="polite">Demo-Shop Möbel · Theme Dwell</span></div>
+        <div class="slides">
+          <img class="active" src="img/demo-moebel.jpg" width="692" height="433" alt="Startseite des Demo-Shops Möbel (Theme Dwell)" data-label="Demo-Shop Möbel · Theme Dwell">
+          <img src="img/demo-schuhe.jpg" width="692" height="433" alt="Startseite des Demo-Shops Schuhe (Theme Horizon)" data-label="Demo-Shop Schuhe · Theme Horizon" loading="lazy">
+          <img src="img/demo-mode.jpg" width="692" height="433" alt="Startseite des Demo-Shops Mode (Theme Horizon)" data-label="Demo-Shop Mode · Theme Horizon" loading="lazy">
+          <img src="img/demo-schmuck.jpg" width="692" height="433" alt="Startseite des Demo-Shops Schmuck (Theme Dwell)" data-label="Demo-Shop Schmuck · Theme Dwell" loading="lazy">
+          <img src="img/demo-alltag.jpg" width="692" height="433" alt="Startseite des Demo-Shops Täglicher Bedarf (Theme Horizon)" data-label="Demo-Shop Täglicher Bedarf · Theme Horizon" loading="lazy">
         </div>
-        <div class="mini-grid">
-          <div><span>🪑</span><b>Produkt</b></div>
-          <div><span>💡</span><b>Produkt</b></div>
-          <div><span>🪴</span><b>Produkt</b></div>
-        </div>
+      </figure>
+      <div class="slide-dots" role="group" aria-label="Demo-Shop wählen">
+        <button type="button" aria-label="Möbel" aria-current="true"></button>
+        <button type="button" aria-label="Schuhe"></button>
+        <button type="button" aria-label="Mode"></button>
+        <button type="button" aria-label="Schmuck"></button>
+        <button type="button" aria-label="Täglicher Bedarf"></button>
       </div>
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="mini-head" style="--c:#e4572e"><b>Ihr Logo</b></div>
-        <div class="phone-prod"><span>👟</span><b>Produkt</b><i>In den Warenkorb</i></div>
-      </div>
-      <div class="float f1">📱 Für Handy optimiert</div>
-      <div class="float f2">⚡ Schnelle Ladezeit</div>
-      <div class="float f3">🛠️ Betreuung inklusive</div>
+      <p class="slide-note">Unsere Demo-Shops auf Shopify – Beispielinhalte, keine Kundenprojekte.</p>
+      <div class="float f1" aria-hidden="true">📱 Für Handy optimiert</div>
+      <div class="float f3" aria-hidden="true">🛠️ Betreuung inklusive</div>
     </div>
    </div>
     <ul class="trust">
@@ -461,8 +460,23 @@
     });
   }));
 
-  // Einblenden beim Scrollen
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Hero-Slider: Demo-Shops
+  const slides = [...document.querySelectorAll('.slides img')];
+  const dots = [...document.querySelectorAll('.slide-dots button')];
+  const label = document.querySelector('.slide-label');
+  let slideIdx = 0, slideTimer = null;
+  function showSlide(i) {
+    slideIdx = (i + slides.length) % slides.length;
+    slides.forEach((img, j) => img.classList.toggle('active', j === slideIdx));
+    dots.forEach((d, j) => d.setAttribute('aria-current', j === slideIdx));
+    label.textContent = slides[slideIdx].dataset.label;
+  }
+  dots.forEach((d, i) => d.addEventListener('click', () => { showSlide(i); clearInterval(slideTimer); }));
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    slideTimer = setInterval(() => showSlide(slideIdx + 1), 4500);
+  }
+
+  // Einblenden beim Scrollen  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('IntersectionObserver' in window && !reduce) {
     const els = document.querySelectorAll('section h2, .card, .step, .table-wrap, .about, details');
     els.forEach(el => el.classList.add('reveal'));
