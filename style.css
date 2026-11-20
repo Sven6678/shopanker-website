@@ -75,6 +75,7 @@ section { padding: 72px 0; }
 .grid { display: grid; gap: 20px; }
 .grid-5 { grid-template-columns: repeat(5, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
 .card {
   background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 24px; box-shadow: var(--shadow);
@@ -213,7 +214,7 @@ section[id] { scroll-margin-top: 72px; }
 /* Responsiv */
 @media (max-width: 960px) {
   .grid-5 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: 1fr; }
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .app-box { grid-template-columns: 1fr; }
   .trust { grid-template-columns: repeat(2, 1fr); }
