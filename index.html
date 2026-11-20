@@ -476,7 +476,8 @@
     slideTimer = setInterval(() => showSlide(slideIdx + 1), 4500);
   }
 
-  // Einblenden beim Scrollen  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Einblenden beim Scrollen
+  const reduce =matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('IntersectionObserver' in window && !reduce) {
     const els = document.querySelectorAll('section h2, .card, .step, .table-wrap, .about, details');
     els.forEach(el => el.classList.add('reveal'));
