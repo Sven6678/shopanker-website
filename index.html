@@ -4,17 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shopanker – Shopify-Shops einrichten & betreuen</title>
-  <meta name="description" content="Shopanker richtet Ihren Shopify-Shop ein und betreut ihn danach zuverlässig – mit festen Paketpreisen. Spezialisiert auf Möbel, Schuhe, Mode, Schmuck und Dinge des täglichen Bedarfs.">
+  <meta name="description" content="Shopanker richtet Ihren Shopify-Shop ein und betreut ihn zu festen Paketpreisen – für Möbel, Schuhe, Mode, Schmuck und Dinge des täglichen Bedarfs.">
+  <link rel="canonical" href="https://sven6678.github.io/shopanker-website/">
   <meta name="theme-color" content="#0f2a44">
   <!-- noindex entfernen, sobald Impressum und Datenschutz vollständig sind -->
   <meta name="robots" content="noindex">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
   <meta property="og:title" content="Shopanker – Shopify-Shops einrichten & betreuen zu festen Preisen">
   <meta property="og:description" content="Shopify-Einrichtung ab 990 €, Betreuung ab 79 €/Monat. Transparente Pakete für Möbel, Schuhe, Mode, Schmuck und Dinge des täglichen Bedarfs.">
   <meta property="og:url" content="https://sven6678.github.io/shopanker-website/">
+  <meta property="og:image" content="https://sven6678.github.io/shopanker-website/img/og-shopanker.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Shopanker – Shopify-Einrichtung ab 990 €, Betreuung ab 79 € im Monat">
+  <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,6 +33,7 @@
     "makesOffer": [
       {"@type": "Offer", "name": "Shopify-Einrichtung Basic", "price": "990", "priceCurrency": "EUR"},
       {"@type": "Offer", "name": "Shopify-Einrichtung Medium", "price": "2490", "priceCurrency": "EUR"},
+      {"@type": "Offer", "name": "Shopify-Einrichtung Premium", "price": "4990", "priceCurrency": "EUR"},
       {"@type": "Offer", "name": "Shopify-Betreuung Basic", "price": "79", "priceCurrency": "EUR"},
       {"@type": "Offer", "name": "Shopify-Betreuung Medium", "price": "199", "priceCurrency": "EUR"},
       {"@type": "Offer", "name": "Shopify-Betreuung Premium", "price": "449", "priceCurrency": "EUR"}
@@ -63,7 +70,7 @@
    <div class="hero-grid">
     <div>
     <span class="eyebrow" style="color:#7fe0d2">Shopify-Einrichtung & Betreuung</span>
-    <h1>Ihr Onlineshop. Fest verankert.</h1>
+    <h1>Ihr Shopify-Shop. Fest verankert.</h1>
     <p class="lead">Shopify-Einrichtung und laufende Betreuung für kleine und mittlere Händler – mit <strong style="color:#fff">festen Preisen, die Sie schon vor dem ersten Gespräch kennen</strong>. Einrichtung ab 990 €, Betreuung ab 79 € im Monat.</p>
     <div class="actions">
       <a class="btn" href="#kontakt">Kostenloses Erstgespräch</a>
@@ -113,7 +120,7 @@
     </div>
 
     <h3 style="margin-top:48px">Shopanker im Vergleich</h3>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Vergleichstabelle: Shopanker, typische Agentur und Freelancer-Plattform" tabindex="0">
       <table class="compare">
         <thead>
           <tr><th></th><th class="us">Shopanker</th><th>Typische Agentur</th><th>Freelancer-Plattform</th></tr>
@@ -373,16 +380,8 @@
     <h2>Kostenloses Erstgespräch vereinbaren</h2>
     <p class="section-intro">Erzählen Sie uns kurz von Ihrem Shop. Wir melden uns innerhalb von zwei Werktagen.</p>
 
-    <!-- Formulardienst: FormSubmit (formsubmit.co) -->
-    <form class="form" id="kontakt-form" name="kontakt" method="POST" action="https://formsubmit.co/c58640b699d4433c2eaa0a36587611e7" data-ready="true">
-      <input type="hidden" name="_subject" value="Neue Anfrage über shopanker-Website">
-      <input type="hidden" name="_next" value="https://sven6678.github.io/shopanker-website/danke.html">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <p class="hp"><label>Nicht ausfüllen: <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
-      <div class="full" id="form-hinweis" hidden style="background:#fff4d6;border:1px solid #f0d58a;border-radius:10px;padding:12px 14px">
-        Das Formular wird gerade eingerichtet. Bitte schreiben Sie uns vorerst eine E-Mail (siehe <a href="impressum.html">Impressum</a>).
-      </div>
+    <!-- Kein Formulardienst: Das Formular bereitet eine E-Mail im Mailprogramm der Besucher vor -->
+    <form class="form" id="kontakt-form" name="kontakt" method="post" enctype="text/plain" action="mailto:svenwetendorf@gmail.com?subject=Anfrage%20%C3%BCber%20die%20Shopanker-Website">
       <div><label for="name">Name *</label><input id="name" name="name" required autocomplete="name"></div>
       <div><label for="email">E-Mail *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
       <div><label for="firma">Firma</label><input id="firma" name="firma" autocomplete="organization"></div>
@@ -408,7 +407,13 @@
         <input type="checkbox" id="dsgvo" name="datenschutz" value="ja" required>
         <label for="dsgvo" style="font-weight:400">Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>. *</label>
       </div>
-      <div class="full"><button class="btn" type="submit">Anfrage senden</button></div>
+      <div class="full"><button class="btn" type="submit">E-Mail vorbereiten</button></div>
+      <div class="full" id="form-hinweis" role="status" hidden style="background:#fff4d6;color:#3d3312;border:1px solid #f0d58a;border-radius:10px;padding:14px">
+        <p style="margin:0 0 8px"><strong>Fast geschafft:</strong> Bitte senden Sie die vorbereitete E-Mail in Ihrem Mailprogramm ab. Erst dann erreicht uns Ihre Anfrage.</p>
+        <p style="margin:0 0 8px">Es hat sich nichts geöffnet? <a id="mail-link" href="mailto:svenwetendorf@gmail.com" style="color:inherit">E-Mail erneut öffnen</a> oder den Text kopieren und an svenwetendorf@gmail.com senden:</p>
+        <textarea id="mail-text" rows="6" readonly aria-label="Text Ihrer Anfrage zum Kopieren"></textarea>
+        <button class="btn" id="mail-copy" type="button" style="margin-top:8px">Text kopieren</button>
+      </div>
     </form>
   </div>
 </section>
@@ -473,12 +478,36 @@
     els.forEach(el => io.observe(el));
   }
 
-  // Solange kein Formulardienst eingetragen ist: Hinweis statt Absenden
+  // Kontaktformular: bereitet eine E-Mail vor, es werden keine Daten an einen Dienst gesendet
   const form = document.getElementById('kontakt-form');
+  const mailText = document.getElementById('mail-text');
+  const mailLink = document.getElementById('mail-link');
+  const mailCopy = document.getElementById('mail-copy');
+  const MAIL_TO = 'svenwetendorf@gmail.com';
+  const MAIL_SUBJECT = 'Anfrage über die Shopanker-Website';
+  const MAIL_MAX = 1900; // längere mailto-Links öffnen manche Programme nicht
   form.addEventListener('submit', (e) => {
-    if (form.dataset.ready !== 'true') {
-      e.preventDefault();
-      document.getElementById('form-hinweis').hidden = false;
+    e.preventDefault();
+    const d = new FormData(form);
+    const zeilen = [['Name', 'name'], ['E-Mail', 'email'], ['Firma', 'firma'], ['Bestehender Shop', 'shop_url'], ['Branche', 'branche'], ['Interesse an', 'paket']]
+      .filter(([, k]) => d.get(k)).map(([l, k]) => `${l}: ${d.get(k)}`);
+    const text = `${zeilen.join('\n')}\n\nNachricht:\n${d.get('nachricht')}`;
+    const basis = `mailto:${MAIL_TO}?subject=${encodeURIComponent(MAIL_SUBJECT)}&body=`;
+    const voll = basis + encodeURIComponent(text.replace(/\n/g, '\r\n'));
+    mailLink.href = voll.length <= MAIL_MAX ? voll : basis + encodeURIComponent('Bitte fügen Sie hier den kopierten Text von der Website ein.');
+    mailText.value = text;
+    mailCopy.textContent = 'Text kopieren';
+    document.getElementById('form-hinweis').hidden = false;
+    mailLink.click();
+  });
+  mailCopy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(mailText.value);
+      mailCopy.textContent = 'Kopiert';
+    } catch {
+      mailText.focus();
+      mailText.select();
+      mailCopy.textContent = 'Bitte mit Strg+C kopieren';
     }
   });
 
