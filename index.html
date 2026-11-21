@@ -380,9 +380,10 @@
     <h2>Kostenloses Erstgespräch vereinbaren</h2>
     <p class="section-intro">Erzählen Sie uns kurz von Ihrem Shop. Wir melden uns innerhalb von zwei Werktagen.</p>
 
-    <!-- Kein Formulardienst: Das Formular bereitet eine E-Mail im Mailprogramm der Besucher vor -->
+    <!-- Versand über die eigene Apps-Script-Web-App, bei Fehlern bereitet das Formular eine E-Mail vor -->
     <form class="form" id="kontakt-form" name="kontakt" method="post" enctype="text/plain" action="mailto:svenwetendorf@gmail.com?subject=Anfrage%20%C3%BCber%20die%20Shopanker-Website">
       <p class="full paket-auswahl" id="paket-auswahl" role="status" hidden>Ihre Auswahl: <strong id="paket-name"></strong></p>
+      <div aria-hidden="true" style="position:absolute;left:-9999px"><label>Webseite<input name="webseite" tabindex="-1" autocomplete="off"></label></div>
       <div><label for="name">Name *</label><input id="name" name="name" required autocomplete="name"></div>
       <div><label for="email">E-Mail *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
       <div><label for="firma">Firma</label><input id="firma" name="firma" autocomplete="organization"></div>
@@ -408,7 +409,8 @@
         <input type="checkbox" id="dsgvo" name="datenschutz" value="ja" required>
         <label for="dsgvo" style="font-weight:400">Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>. *</label>
       </div>
-      <div class="full"><button class="btn" type="submit">E-Mail vorbereiten</button></div>
+      <div class="full"><button class="btn" id="form-senden" type="submit">Anfrage senden</button></div>
+      <p class="full paket-auswahl" id="form-erfolg" role="status" tabindex="-1" hidden><strong>Vielen Dank für Ihre Anfrage!</strong> Wir melden uns innerhalb von zwei Werktagen bei Ihnen.</p>
       <div class="full" id="form-hinweis" role="status" hidden style="background:#fff4d6;color:#3d3312;border:1px solid #f0d58a;border-radius:10px;padding:14px">
         <p style="margin:0 0 8px"><strong>Fast geschafft:</strong> Bitte senden Sie die vorbereitete E-Mail in Ihrem Mailprogramm ab. Erst dann erreicht uns Ihre Anfrage.</p>
         <p style="margin:0 0 8px">Es hat sich nichts geöffnet? <a id="mail-link" href="mailto:svenwetendorf@gmail.com" style="color:inherit">E-Mail erneut öffnen</a> oder den Text kopieren und an svenwetendorf@gmail.com senden:</p>
@@ -487,9 +489,36 @@
   const MAIL_TO = 'svenwetendorf@gmail.com';
   const MAIL_SUBJECT = 'Anfrage über die Shopanker-Website';
   const MAIL_MAX = 1900; // längere mailto-Links öffnen manche Programme nicht
-  form.addEventListener('submit', (e) => {
+  // Adresse der Web-App „Shopanker Website-Anfragen“. Leer = Formular bereitet nur eine E-Mail vor.
+  const ANFRAGE_URL = 'https://script.google.com/macros/s/AKfycbxKx8xjBkfe3qDmDiMp5e3yQlk0eLap2I_ETNy9c6rts-BzFHiS3sDd2CB9lYDo1hBP/exec';
+  const sendenBtn = document.getElementById('form-senden');
+  const erfolg = document.getElementById('form-erfolg');
+  if (ANFRAGE_URL) sendenBtn.textContent = 'Anfrage senden';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const d = new FormData(form);
+    erfolg.hidden = true;
+    document.getElementById('form-hinweis').hidden = true;
+    if (ANFRAGE_URL) {
+      sendenBtn.disabled = true;
+      sendenBtn.textContent = 'Wird gesendet …';
+      try {
+        // text/plain vermeidet die CORS-Vorabfrage, die Apps Script nicht beantwortet
+        const r = await fetch(ANFRAGE_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(Object.fromEntries(d)), signal: AbortSignal.timeout(20000) });
+        const a = await r.json();
+        if (a.ok) {
+          form.reset();
+          zeigePaket();
+          erfolg.hidden = false;
+          erfolg.focus();
+          return;
+        }
+      } catch { /* Ersatzweg per E-Mail folgt */ } finally {
+        sendenBtn.disabled = false;
+        sendenBtn.textContent = 'Anfrage senden';
+      }
+    }
     const zeilen = [['Name', 'name'], ['E-Mail', 'email'], ['Firma', 'firma'], ['Bestehender Shop', 'shop_url'], ['Branche', 'branche'], ['Interesse an', 'paket']]
       .filter(([, k]) => d.get(k)).map(([l, k]) => `${l}: ${d.get(k)}`);
     const text = `${zeilen.join('\n')}\n\nNachricht:\n${d.get('nachricht')}`;
