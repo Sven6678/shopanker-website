@@ -382,6 +382,7 @@
 
     <!-- Kein Formulardienst: Das Formular bereitet eine E-Mail im Mailprogramm der Besucher vor -->
     <form class="form" id="kontakt-form" name="kontakt" method="post" enctype="text/plain" action="mailto:svenwetendorf@gmail.com?subject=Anfrage%20%C3%BCber%20die%20Shopanker-Website">
+      <p class="full paket-auswahl" id="paket-auswahl" role="status" hidden>Ihre Auswahl: <strong id="paket-name"></strong></p>
       <div><label for="name">Name *</label><input id="name" name="name" required autocomplete="name"></div>
       <div><label for="email">E-Mail *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
       <div><label for="firma">Firma</label><input id="firma" name="firma" autocomplete="organization"></div>
@@ -492,9 +493,13 @@
     const zeilen = [['Name', 'name'], ['E-Mail', 'email'], ['Firma', 'firma'], ['Bestehender Shop', 'shop_url'], ['Branche', 'branche'], ['Interesse an', 'paket']]
       .filter(([, k]) => d.get(k)).map(([l, k]) => `${l}: ${d.get(k)}`);
     const text = `${zeilen.join('\n')}\n\nNachricht:\n${d.get('nachricht')}`;
-    const basis = `mailto:${MAIL_TO}?subject=${encodeURIComponent(MAIL_SUBJECT)}&body=`;
+    // Das Paket steht immer im Betreff, auch wenn der Text für den Mail-Link zu lang ist
+    const paket = form.elements.paket.selectedIndex > 0 ? d.get('paket') : '';
+    const betreff = paket ? `${MAIL_SUBJECT}: ${paket}` : MAIL_SUBJECT;
+    const basis = `mailto:${MAIL_TO}?subject=${encodeURIComponent(betreff)}&body=`;
     const voll = basis + encodeURIComponent(text.replace(/\n/g, '\r\n'));
-    mailLink.href = voll.length <= MAIL_MAX ? voll : basis + encodeURIComponent('Bitte fügen Sie hier den kopierten Text von der Website ein.');
+    const kurz = `${paket ? `Interesse an: ${paket}\r\n\r\n` : ''}Bitte fügen Sie hier den kopierten Text von der Website ein.`;
+    mailLink.href = voll.length <= MAIL_MAX ? voll : basis + encodeURIComponent(kurz);
     mailText.value = text;
     mailCopy.textContent = 'Text kopieren';
     document.getElementById('form-hinweis').hidden = false;
@@ -512,9 +517,20 @@
   });
 
   // „Anfragen“ füllt das Paket im Formular vor
+  const paketFeld = document.getElementById('paket');
+  const paketAuswahl = document.getElementById('paket-auswahl');
+  function zeigePaket() {
+    const gewaehlt = paketFeld.selectedIndex > 0;
+    paketAuswahl.hidden = !gewaehlt;
+    document.getElementById('paket-name').textContent = gewaehlt ? paketFeld.value : '';
+  }
   document.querySelectorAll('[data-paket]').forEach(b => b.addEventListener('click', () => {
-    document.getElementById('paket').value = b.dataset.paket;
+    paketFeld.value = b.dataset.paket;
+    zeigePaket();
   }));
+  paketFeld.addEventListener('change', zeigePaket);
+  // Auch nach Neuladen oder „Zurück“ stellt der Browser die Auswahl wieder her
+  window.addEventListener('pageshow', zeigePaket);
 </script>
 </body>
 </html>
